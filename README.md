@@ -4,8 +4,6 @@
 Bot Telegram **OTP WhatsApp** gratis, real-time, dan multi-negara.  
 Dapatkan kode OTP WhatsApp dari nomor virtual smsonline.cloud yang selalu update, serta fitur pencarian nomor mudah & tombol interaktif!
 
-![waotp banner](https://raw.githubusercontent.com/Arief-zx/waotp/main/assets/ad691bb1544566e5f56fe0445c9159b2.jpg)
-
 ---
 
 ## ✨ Fitur Utama
