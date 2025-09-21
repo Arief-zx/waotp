@@ -35,6 +35,11 @@ def get_countries():
         resp.raise_for_status()
         soup = BeautifulSoup(resp.text, "html.parser")
         items = soup.select("div.country a")
+
+        if not items:
+            print("[WARNING get_countries] Tidak ada elemen div.country a ditemukan")
+            return {}
+
         for item in items:
             href = item.get("href", "")
             code = href.split("/")[-1]
@@ -54,6 +59,11 @@ def get_numbers(country_code="62"):
         resp.raise_for_status()
         soup = BeautifulSoup(resp.text, "html.parser")
         rows = soup.select("table tbody tr")
+
+        if not rows:
+            print(f"[WARNING get_numbers] Tidak ada baris tabel di {url}")
+            return []
+
         numbers = []
         for row in rows:
             cols = [str(c) for c in row.find_all("td")]  # raw HTML cols
@@ -72,6 +82,11 @@ def get_otp_for_number(number_url):
         resp.raise_for_status()
         soup = BeautifulSoup(resp.text, "html.parser")
         rows = soup.select("table tbody tr")
+
+        if not rows:
+            print(f"[WARNING get_otp_for_number] Tidak ada SMS di {number_url}")
+            return []
+
         messages = []
         for row in rows:
             cols = [c.text.strip() for c in row.find_all("td")]
@@ -214,7 +229,7 @@ def main():
     threading.Thread(target=check_sms_loop, args=(app,), daemon=True).start()
 
     print("🚀 Bot is running...")
-    app.run_polling()
+    app.run_polling(allowed_updates=Update.ALL_TYPES)
 
 
 if __name__ == "__main__":
