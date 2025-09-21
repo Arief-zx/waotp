@@ -25,7 +25,11 @@ def get_all_numbers():
     url = "https://www.smsonline.cloud/id"
     resp = requests.get(url)
     soup = BeautifulSoup(resp.text, "html.parser")
-    table = soup.find("table", class_="table")
+    # Coba cari tabel dengan class yang sesuai (bisa kamu sesuaikan dengan hasil HTML aslinya)
+    table = soup.find("table", class_="table")  # Atau: class_="table table-bordered" jika memang itu di HTML
+    if table is None:
+        print("Table not found in HTML")
+        return {}  # atau return [] sesuai kebutuhan
     numbers = {}
     for row in table.find_all("tr")[1:]:
         cols = row.find_all("td")
