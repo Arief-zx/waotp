@@ -4,7 +4,8 @@ import time
 import threading
 import random
 from bs4 import BeautifulSoup
-from telegram import Bot, Update, InlineKeyboardButton, InlineKeyboardMarkup, ParseMode
+from telegram import Bot, Update, InlineKeyboardButton, InlineKeyboardMarkup
+from telegram.constants import ParseMode
 from telegram.ext import ApplicationBuilder, CommandHandler, CallbackQueryHandler, ContextTypes
 
 TOKEN = os.environ.get("TOKEN", "8224787115:AAHDsKKdZmWTqUIMAeTbcM29g5SPeRNeOd0")
